@@ -1,0 +1,28 @@
+name:                stackage-dot
+version:             0.1.0.0
+synopsis:            Visualize the project dependency graph using Graphviz dot.
+description:
+  With @stackage-build@, multiple packages can't be grouped into a project
+  using the @stackage-build.config@ file. @stackage-dot@ shows the dependency
+  graph between each package listed in @stackage-build.config@.
+license:             MIT
+license-file:        LICENSE
+author:              Mathieu Boespflug
+maintainer:          mathieu@tweag.net
+copyright:           (c) 2015 FP Complete Corporation
+category:            Distribution
+build-type:          Simple
+extra-source-files:  README.md
+cabal-version:       >=1.10
+
+executable stackage-dot
+  main-is:             Main.hs
+  build-depends:       base >=4.7 && <4.8
+                     , conduit >= 1.2
+                     , conduit-combinators >= 0.3
+                     , containers >= 0.5
+                     , stackage-build
+                     , text >= 1.2
+  hs-source-dirs:      src
+  default-language:    Haskell2010
+  ghc-options:         -Wall
