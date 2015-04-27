@@ -4,6 +4,7 @@
 module Main where
 
 import           Control.Monad (forM_, when)
+import           Control.Monad.Logger (runNoLoggingT)
 import           Data.Conduit (Conduit, ($$), ($=), awaitForever, yield)
 import qualified Data.Conduit.Combinators as C
 import           Data.Monoid
@@ -34,6 +35,5 @@ emitGraph = do
 main :: IO ()
 main = do
     config <- readConfig
-    -- Ignore errors - produce graph on a best effort basis.
-    (pinfos, _errs) <- getPackageInfos DoNothing config
+    pinfos <- runNoLoggingT $ getPackageInfos DoNothing Nothing config
     C.yieldMany pinfos $= emitGraph $$ C.stdout

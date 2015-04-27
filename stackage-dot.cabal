@@ -21,6 +21,7 @@ executable stackage-dot
                      , conduit >= 1.2
                      , conduit-combinators >= 0.3
                      , containers >= 0.5
+                     , monad-logger >= 0.3
                      , stackage-build
                      , text >= 1.2
   hs-source-dirs:      src
